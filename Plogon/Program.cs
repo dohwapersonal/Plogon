@@ -11,7 +11,7 @@ namespace Plogon;
 
 class Program
 {
-    private static readonly string[] AlwaysBuildUsers = new[] { "goaaats", "reiichi001", "lmcintyre", "ackwell", "karashiiro", "philpax" };
+    private static readonly string[] AlwaysBuildUsers = new[] { "KangDohwa", "dohwapersonal" };
 
     /// <summary>
     /// The main entry point for the application.
@@ -368,7 +368,7 @@ class Program
                     var alreadyPosted = existingMessages.Length > 0;
 
                     var links =
-                        $"[Show log](https://github.com/goatcorp/DalamudPluginsD17/actions/runs/{actionRunId}) - [Review](https://github.com/goatcorp/DalamudPluginsD17/pull/{prNumber}/files#submit-review)";
+                        $"[Show log](https://github.com/dohwapersonal/DalamudPluginsD17/actions/runs/{actionRunId}) - [Review](https://github.com/dohwapersonal/DalamudPluginsD17/pull/{prNumber}/files#submit-review)";
 
                     var commentText = anyFailed ? "Builds failed, please check action output." : "All builds OK!";
                     if (!anyTried)
@@ -432,7 +432,7 @@ class Program
 
                     var ok = !anyFailed && anyTried;
                     var id = await webhook.Send(ok ? Color.Purple : Color.Red,
-                        $"{buildInfo}\n\n{links} - [PR](https://github.com/goatcorp/DalamudPluginsD17/pull/{prNumber})",
+                        $"{buildInfo}\n\n{links} - [PR](https://github.com/dohwapersonal/DalamudPluginsD17/pull/{prNumber})",
                         hookTitle, ok ? "Accepted" : "Rejected");
                     await webservices.RegisterMessageId(prNumber!, id);
 
@@ -443,7 +443,7 @@ class Program
                 if (repoName != null && commit && anyTried)
                 {
                     await webhook.Send(!anyFailed ? Color.Green : Color.Red,
-                        $"{ReplaceDiscordEmotes(buildsMd.GetText(true, true))}\n\n[Show log](https://github.com/goatcorp/DalamudPluginsD17/actions/runs/{actionRunId})",
+                        $"{ReplaceDiscordEmotes(buildsMd.GetText(true, true))}\n\n[Show log](https://github.com/dohwapersonal/DalamudPluginsD17/actions/runs/{actionRunId})",
                         "Builds committed", string.Empty);
 
                     // TODO: We don't support this for removals for now
